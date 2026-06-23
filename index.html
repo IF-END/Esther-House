@@ -2,24 +2,31 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#FFF8F3" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
   <title>우거지 해장국 공구 🍲</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #111111;
-      --surface: #1E1E1E;
-      --card: #272727;
-      --accent: #E8521A;
-      --accent-soft: #FF6B35;
-      --cream: #F5E6C8;
-      --muted: #888;
-      --border: #333;
-      --text: #F0EDE6;
+      --bg:          #FFF8F3;
+      --surface:     #FFFFFF;
+      --card:        #FFFFFF;
+      --accent:      #D94F1E;
+      --accent-soft: #F06030;
+      --accent-bg:   #FEF0EA;
+      --cream:       #7A3010;
+      --muted:       #999;
+      --border:      #EDE5DF;
+      --text:        #1A1008;
+      --text-sub:    #6B5C52;
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
     }
+
+    html { -webkit-text-size-adjust: 100%; }
 
     body {
       background: var(--bg);
@@ -27,91 +34,100 @@
       font-family: 'Noto Sans KR', sans-serif;
       min-height: 100vh;
       line-height: 1.6;
+      padding-bottom: calc(84px + var(--safe-bottom));
     }
 
     /* ── HERO ── */
     .hero {
-      background: linear-gradient(160deg, #1a0a04 0%, #111 60%);
+      background: linear-gradient(150deg, #FDE8D8 0%, #FFF3EC 55%, #FFF8F3 100%);
       border-bottom: 1px solid var(--border);
-      padding: 60px 24px 48px;
+      padding: 48px 20px 36px;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
     .hero::before {
       content: '🍲';
-      font-size: 120px;
+      font-size: 140px;
       position: absolute;
-      top: -20px;
+      bottom: -30px;
       right: -20px;
-      opacity: 0.07;
+      opacity: 0.12;
       pointer-events: none;
+      line-height: 1;
     }
     .badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
       background: var(--accent);
       color: #fff;
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 2px;
-      margin-bottom: 20px;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 18px;
     }
     .hero h1 {
-      font-size: clamp(32px, 8vw, 64px);
+      font-size: clamp(28px, 8vw, 60px);
       font-weight: 900;
-      color: var(--cream);
+      color: var(--text);
       line-height: 1.1;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     .hero h1 span { color: var(--accent); }
     .hero p {
-      color: var(--muted);
-      font-size: 15px;
-      max-width: 480px;
-      margin: 0 auto 32px;
+      color: var(--text-sub);
+      font-size: 14px;
+      max-width: 440px;
+      margin: 0 auto 28px;
     }
 
     /* ── COUNTDOWN ── */
     .countdown-wrap {
       display: flex;
       justify-content: center;
-      gap: 16px;
-      margin-bottom: 32px;
+      gap: 8px;
+      margin-bottom: 24px;
     }
     .countdown-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 12px 20px;
-      min-width: 72px;
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 0;
+      flex: 1;
+      max-width: 78px;
+      min-width: 0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
     }
     .countdown-num {
-      font-size: 32px;
+      font-size: clamp(22px, 6vw, 30px);
       font-weight: 900;
-      color: var(--accent-soft);
+      color: var(--accent);
       display: block;
       line-height: 1;
+      text-align: center;
     }
     .countdown-label {
       font-size: 11px;
       color: var(--muted);
       display: block;
       margin-top: 4px;
-      letter-spacing: 1px;
+      text-align: center;
     }
 
     /* ── PROGRESS ── */
     .progress-section {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px 24px;
-      max-width: 560px;
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      max-width: 540px;
       margin: 0 auto;
       text-align: left;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
     .progress-header {
       display: flex;
@@ -119,19 +135,19 @@
       align-items: baseline;
       margin-bottom: 10px;
     }
-    .progress-header span:first-child { font-size: 13px; color: var(--muted); }
-    .progress-count { font-size: 22px; font-weight: 900; color: var(--cream); }
+    .progress-header span:first-child { font-size: 13px; color: var(--text-sub); }
+    .progress-count { font-size: 20px; font-weight: 900; color: var(--text); }
     .progress-count small { font-size: 13px; color: var(--muted); font-weight: 400; }
     .progress-bar-bg {
       background: var(--border);
-      border-radius: 4px;
+      border-radius: 6px;
       height: 8px;
       overflow: hidden;
     }
     .progress-bar-fill {
       background: linear-gradient(90deg, var(--accent), var(--accent-soft));
       height: 100%;
-      border-radius: 4px;
+      border-radius: 6px;
       width: 0%;
       transition: width 1s ease;
     }
@@ -141,198 +157,243 @@
       color: var(--muted);
     }
 
-    /* ── MAIN LAYOUT ── */
+    /* ── MAIN ── */
     .container {
       max-width: 960px;
       margin: 0 auto;
-      padding: 48px 24px;
+      padding: 28px 16px;
     }
+    @media (min-width: 600px) { .container { padding: 44px 24px; } }
+
     .section-title {
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 3px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 24px;
+      margin-bottom: 14px;
     }
-
-    /* ── PRODUCT REGISTER FORM ── */
-    .form-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      margin-bottom: 48px;
-    }
-    .form-card h2 {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--cream);
-      margin-bottom: 6px;
-    }
-    .form-card p {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 28px;
-    }
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
-    .form-group { display: flex; flex-direction: column; gap: 6px; }
-    .form-group.full { grid-column: 1 / -1; }
-    label {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--muted);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-    input, select, textarea {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      color: var(--text);
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 14px;
-      padding: 11px 14px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    input:focus, select:focus, textarea:focus {
-      border-color: var(--accent);
-    }
-    input::placeholder, textarea::placeholder { color: #555; }
-    select option { background: #1E1E1E; }
-    textarea { resize: vertical; min-height: 90px; }
-    .btn-submit {
-      margin-top: 24px;
-      width: 100%;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 15px;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.1s;
-    }
-    .btn-submit:hover { background: var(--accent-soft); }
-    .btn-submit:active { transform: scale(0.98); }
-
-    /* ── ITEM LIST ── */
-    .item-list { display: flex; flex-direction: column; gap: 12px; }
-    .item-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px 24px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: start;
-      gap: 16px;
-      animation: fadeIn 0.4s ease;
-    }
-    @keyframes fadeIn { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: none; } }
-    .item-info h3 { font-size: 16px; font-weight: 700; color: var(--cream); margin-bottom: 4px; }
-    .item-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-    .tag {
-      background: #1A1A1A;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      font-size: 11px;
-      color: var(--muted);
-      padding: 2px 8px;
-    }
-    .tag.accent { border-color: var(--accent); color: var(--accent-soft); background: #2a1108; }
-    .item-price {
-      font-size: 22px;
-      font-weight: 900;
-      color: var(--accent-soft);
-      white-space: nowrap;
-    }
-    .item-price small { font-size: 12px; font-weight: 400; color: var(--muted); display: block; text-align: right; }
-    .empty-state {
-      text-align: center;
-      padding: 60px 24px;
-      color: var(--muted);
-    }
-    .empty-state .icon { font-size: 48px; margin-bottom: 16px; }
-    .empty-state p { font-size: 14px; }
 
     /* ── INFO BOX ── */
     .info-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-      margin-bottom: 48px;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    @media (min-width: 600px) {
+      .info-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 40px; }
     }
     .info-box {
-      background: var(--card);
-      border: 1px solid var(--border);
+      background: #fff;
+      border: 1.5px solid var(--border);
       border-radius: 12px;
-      padding: 20px;
+      padding: 14px 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
-    .info-box .icon { font-size: 22px; margin-bottom: 10px; }
-    .info-box h4 { font-size: 12px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
-    .info-box p { font-size: 15px; font-weight: 700; color: var(--cream); }
+    .info-box .icon { font-size: 20px; margin-bottom: 8px; }
+    .info-box h4 { font-size: 10px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 3px; }
+    .info-box p { font-size: 13px; font-weight: 700; color: var(--text); }
+
+    /* ── FORM ── */
+    .form-card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 18px;
+      padding: 24px 18px;
+      margin-bottom: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    @media (min-width: 600px) { .form-card { padding: 32px; margin-bottom: 40px; } }
+
+    .form-card h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .form-card > p {
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-bottom: 22px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    @media (min-width: 600px) { .form-grid { grid-template-columns: 1fr 1fr; gap: 16px; } }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1 / -1; }
+    label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-sub);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+    input, select, textarea {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 16px;
+      padding: 13px 14px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+      min-height: 48px;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(217,79,30,0.1);
+      background: #fff;
+    }
+    input::placeholder, textarea::placeholder { color: #C5B8B0; }
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-color: var(--bg);
+      padding-right: 36px;
+      cursor: pointer;
+    }
+    select:focus { background-color: #fff; }
+    select option { background: #fff; color: var(--text); }
+    textarea { resize: vertical; min-height: 80px; }
+
+    /* ── 하단 고정 버튼 ── */
+    .btn-submit-fixed {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,248,243,0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+      padding: 12px 16px calc(12px + var(--safe-bottom));
+    }
+    .btn-submit {
+      display: block;
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+      min-height: 52px;
+      -webkit-tap-highlight-color: transparent;
+      box-shadow: 0 4px 14px rgba(217,79,30,0.35);
+    }
+    .btn-submit:hover { background: var(--accent-soft); }
+    .btn-submit:active { transform: scale(0.98); box-shadow: none; }
+
+    /* ── ITEM LIST ── */
+    .item-list { display: flex; flex-direction: column; gap: 10px; }
+    .item-card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      animation: fadeIn 0.35s ease;
+    }
+    @media (min-width: 500px) {
+      .item-card { flex-direction: row; align-items: center; padding: 18px 22px; gap: 16px; }
+    }
+    @keyframes fadeIn { from { opacity:0; transform: translateY(6px); } to { opacity:1; transform: none; } }
+
+    .item-info { flex: 1; }
+    .item-info h3 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+    .item-info .menu-name { font-size: 13px; color: var(--text-sub); }
+    .item-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .tag {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 11px;
+      color: var(--text-sub);
+      padding: 3px 8px;
+    }
+    .tag.accent {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-bg);
+      font-weight: 700;
+    }
+    .item-price {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--accent);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .item-price small { font-size: 11px; font-weight: 400; color: var(--muted); display: block; text-align: right; margin-top: 2px; }
+
+    .empty-state {
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--muted);
+      background: #fff;
+      border: 1.5px dashed var(--border);
+      border-radius: 16px;
+    }
+    .empty-state .icon { font-size: 44px; margin-bottom: 12px; }
+    .empty-state p { font-size: 14px; color: var(--text-sub); }
 
     /* ── TOAST ── */
     .toast {
       position: fixed;
-      bottom: 24px;
+      bottom: calc(84px + var(--safe-bottom) + 10px);
       left: 50%;
-      transform: translateX(-50%) translateY(80px);
-      background: var(--accent);
+      transform: translateX(-50%) translateY(60px);
+      background: var(--text);
       color: #fff;
-      padding: 12px 24px;
+      padding: 11px 20px;
       border-radius: 100px;
       font-size: 14px;
-      font-weight: 700;
-      transition: transform 0.3s ease;
+      font-weight: 600;
+      transition: transform 0.28s ease, opacity 0.28s ease;
       z-index: 999;
       white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
     }
-    .toast.show { transform: translateX(-50%) translateY(0); }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
     footer {
       border-top: 1px solid var(--border);
-      padding: 24px;
+      padding: 18px 20px;
       text-align: center;
       font-size: 12px;
-      color: #444;
+      color: var(--muted);
     }
   </style>
 </head>
 <body>
 
-<!-- HERO -->
 <section class="hero">
   <div class="badge">🔥 공구 진행중</div>
   <h1>우거지 <span>해장국</span><br>공동구매</h1>
   <p>뜨끈하고 진한 국물, 함께 모아서 더 저렴하게.<br>아래에서 원하는 물품을 등록해주세요.</p>
 
   <div class="countdown-wrap">
-    <div class="countdown-box">
-      <span class="countdown-num" id="cd-days">--</span>
-      <span class="countdown-label">일</span>
-    </div>
-    <div class="countdown-box">
-      <span class="countdown-num" id="cd-hours">--</span>
-      <span class="countdown-label">시간</span>
-    </div>
-    <div class="countdown-box">
-      <span class="countdown-num" id="cd-mins">--</span>
-      <span class="countdown-label">분</span>
-    </div>
-    <div class="countdown-box">
-      <span class="countdown-num" id="cd-secs">--</span>
-      <span class="countdown-label">초</span>
-    </div>
+    <div class="countdown-box"><span class="countdown-num" id="cd-days">--</span><span class="countdown-label">일</span></div>
+    <div class="countdown-box"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-label">시간</span></div>
+    <div class="countdown-box"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-label">분</span></div>
+    <div class="countdown-box"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-label">초</span></div>
   </div>
 
   <div class="progress-section">
@@ -340,67 +401,46 @@
       <span>현재 모집 현황</span>
       <span class="progress-count" id="prog-count">0 <small>/ 30명</small></span>
     </div>
-    <div class="progress-bar-bg">
-      <div class="progress-bar-fill" id="prog-bar"></div>
-    </div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill" id="prog-bar"></div></div>
     <p class="progress-note" id="prog-note">아직 참여자가 없습니다. 첫 번째로 등록해보세요!</p>
   </div>
 </section>
 
 <div class="container">
 
-  <!-- INFO -->
   <div class="info-grid">
-    <div class="info-box">
-      <div class="icon">📦</div>
-      <h4>최소 수량</h4>
-      <p>10인분 이상</p>
-    </div>
-    <div class="info-box">
-      <div class="icon">🚚</div>
-      <h4>배송 방식</h4>
-      <p>공동 수령 / 개별 택배</p>
-    </div>
-    <div class="info-box">
-      <div class="icon">💳</div>
-      <h4>결제 방법</h4>
-      <p>계좌이체 (마감 후)</p>
-    </div>
-    <div class="info-box">
-      <div class="icon">📅</div>
-      <h4>공구 마감</h4>
-      <p id="deadline-display">설정 필요</p>
-    </div>
+    <div class="info-box"><div class="icon">📦</div><h4>최소 수량</h4><p>10인분 이상</p></div>
+    <div class="info-box"><div class="icon">🚚</div><h4>배송 방식</h4><p>공동 수령 / 택배</p></div>
+    <div class="info-box"><div class="icon">💳</div><h4>결제 방법</h4><p>계좌이체</p></div>
+    <div class="info-box"><div class="icon">📅</div><h4>공구 마감</h4><p id="deadline-display">-</p></div>
   </div>
 
-  <!-- REGISTER FORM -->
   <p class="section-title">물품 등록</p>
   <div class="form-card">
     <h2>참여 신청하기</h2>
     <p>원하는 메뉴와 수량을 입력하면 목록에 추가됩니다.</p>
-
     <div class="form-grid">
       <div class="form-group">
         <label>이름 / 닉네임</label>
-        <input type="text" id="f-name" placeholder="홍길동" />
+        <input type="text" id="f-name" placeholder="홍길동" autocomplete="name" />
       </div>
       <div class="form-group">
         <label>연락처</label>
-        <input type="tel" id="f-contact" placeholder="010-0000-0000" />
+        <input type="tel" id="f-contact" placeholder="010-0000-0000" autocomplete="tel" inputmode="tel" />
       </div>
       <div class="form-group">
         <label>메뉴 선택</label>
         <select id="f-menu">
           <option value="">-- 선택 --</option>
-          <option value="우거지 해장국 (1인분)">우거지 해장국 (1인분) — 8,000원</option>
-          <option value="우거지 해장국 (2인분)">우거지 해장국 (2인분) — 15,000원</option>
-          <option value="우거지 해장국 (3인분)">우거지 해장국 (3인분) — 22,000원</option>
-          <option value="우거지 해장국 대용량 (5인분)">우거지 해장국 대용량 (5인분) — 35,000원</option>
+          <option value="우거지 해장국 (1인분)">우거지 해장국 1인분 — 8,000원</option>
+          <option value="우거지 해장국 (2인분)">우거지 해장국 2인분 — 15,000원</option>
+          <option value="우거지 해장국 (3인분)">우거지 해장국 3인분 — 22,000원</option>
+          <option value="우거지 해장국 대용량 (5인분)">대용량 5인분 — 35,000원</option>
         </select>
       </div>
       <div class="form-group">
         <label>수량</label>
-        <input type="number" id="f-qty" placeholder="1" min="1" max="20" value="1" />
+        <input type="number" id="f-qty" value="1" min="1" max="20" inputmode="numeric" />
       </div>
       <div class="form-group full">
         <label>배송 방법</label>
@@ -414,29 +454,27 @@
         <textarea id="f-note" placeholder="예) 맵기 조절, 추가 요청 등"></textarea>
       </div>
     </div>
-
-    <button class="btn-submit" onclick="submitItem()">🍲 신청 등록하기</button>
   </div>
 
-  <!-- ITEM LIST -->
   <p class="section-title">신청 목록</p>
   <div class="item-list" id="item-list">
     <div class="empty-state">
       <div class="icon">🥣</div>
-      <p>아직 등록된 신청이 없습니다.<br>위 폼을 통해 첫 번째로 신청해보세요!</p>
+      <p>아직 등록된 신청이 없습니다.<br>첫 번째로 신청해보세요!</p>
     </div>
   </div>
 
 </div>
 
+<footer>Esther House Food Market · 문의는 카카오톡 오픈채팅으로</footer>
+
+<div class="btn-submit-fixed">
+  <button class="btn-submit" onclick="submitItem()">🍲 신청 등록하기</button>
+</div>
+
 <div class="toast" id="toast"></div>
 
-<footer>
-  우거지 해장국 공동구매 · 문의는 카카오톡 오픈채팅으로
-</footer>
-
 <script>
-  // ── 마감일 설정 (여기서 수정) ──
   const DEADLINE = new Date('2025-07-05T23:59:59');
   const MAX_PARTICIPANTS = 30;
   const PRICE_MAP = {
@@ -446,14 +484,11 @@
     '우거지 해장국 대용량 (5인분)': 35000,
   };
 
-  // 마감일 표시
   document.getElementById('deadline-display').textContent =
     DEADLINE.toLocaleDateString('ko-KR', { month: 'long', day: 'numeric', weekday: 'short' });
 
-  // ── 카운트다운 ──
   function updateCountdown() {
-    const now = new Date();
-    const diff = DEADLINE - now;
+    const diff = DEADLINE - new Date();
     if (diff <= 0) {
       ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => document.getElementById(id).textContent = '00');
       return;
@@ -466,58 +501,54 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // ── 데이터 ──
   let items = JSON.parse(localStorage.getItem('gonggu-items') || '[]');
-
   function save() { localStorage.setItem('gonggu-items', JSON.stringify(items)); }
 
   function updateProgress() {
     const count = items.length;
     document.getElementById('prog-count').innerHTML = `${count} <small>/ ${MAX_PARTICIPANTS}명</small>`;
-    const pct = Math.min((count / MAX_PARTICIPANTS) * 100, 100);
-    document.getElementById('prog-bar').style.width = pct + '%';
+    document.getElementById('prog-bar').style.width = Math.min((count / MAX_PARTICIPANTS) * 100, 100) + '%';
     document.getElementById('prog-note').textContent =
       count === 0 ? '아직 참여자가 없습니다. 첫 번째로 등록해보세요!' :
       count >= MAX_PARTICIPANTS ? '🎉 정원이 다 찼습니다!' :
       `${MAX_PARTICIPANTS - count}명 더 모이면 공구가 확정됩니다.`;
   }
 
+  function escHtml(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
   function renderList() {
     const list = document.getElementById('item-list');
     if (items.length === 0) {
-      list.innerHTML = `<div class="empty-state"><div class="icon">🥣</div><p>아직 등록된 신청이 없습니다.<br>위 폼을 통해 첫 번째로 신청해보세요!</p></div>`;
+      list.innerHTML = `<div class="empty-state"><div class="icon">🥣</div><p>아직 등록된 신청이 없습니다.<br>첫 번째로 신청해보세요!</p></div>`;
       return;
     }
-    list.innerHTML = items.map((it, i) => {
+    list.innerHTML = items.map(it => {
       const price = (PRICE_MAP[it.menu] || 0) * it.qty;
-      return `
-      <div class="item-card">
+      return `<div class="item-card">
         <div class="item-info">
           <h3>${escHtml(it.name)}</h3>
-          <div>${escHtml(it.menu)}</div>
+          <div class="menu-name">${escHtml(it.menu)}</div>
           <div class="item-meta">
-            <span class="tag accent">수량 × ${it.qty}</span>
+            <span class="tag accent">× ${it.qty}</span>
             <span class="tag">${escHtml(it.delivery)}</span>
             ${it.note ? `<span class="tag">${escHtml(it.note)}</span>` : ''}
           </div>
         </div>
-        <div>
-          <div class="item-price">${price.toLocaleString()}원<small>${it.contact}</small></div>
-        </div>
+        <div class="item-price">${price.toLocaleString()}원<small>${escHtml(it.contact)}</small></div>
       </div>`;
     }).join('');
     updateProgress();
   }
 
-  function escHtml(s) {
-    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
-
+  let toastTimer;
   function showToast(msg) {
     const t = document.getElementById('toast');
     t.textContent = msg;
     t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 2800);
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 2500);
   }
 
   function submitItem() {
@@ -538,15 +569,14 @@
     renderList();
     updateProgress();
 
-    // reset
     ['f-name','f-contact','f-note'].forEach(id => document.getElementById(id).value = '');
     document.getElementById('f-menu').value = '';
     document.getElementById('f-qty').value = '1';
 
+    document.getElementById('item-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
     showToast('✅ 신청이 등록되었습니다!');
   }
 
-  // init
   renderList();
   updateProgress();
 </script>
