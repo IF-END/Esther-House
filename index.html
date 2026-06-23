@@ -624,6 +624,21 @@
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
+  function maskName(name) {
+    const s = escHtml(name);
+    if (s.length <= 1) return s;
+    return s[0] + '*'.repeat(s.length - 1);
+  }
+
+  function maskPhone(phone) {
+    const s = escHtml(phone);
+    // 앞 4자리만 표시, 나머지 *
+    const digits = s.replace(/[^0-9]/g, '');
+    const visible = s.slice(0, 4);
+    const rest = s.slice(4).replace(/[0-9]/g, '*');
+    return visible + rest;
+  }
+
   function renderList() {
     const list = document.getElementById('item-list');
     if (items.length === 0) {
@@ -634,7 +649,7 @@
       const price = (PRICE_MAP[it.menu] || 0) * it.qty;
       return `<div class="item-card">
         <div class="item-info">
-          <h3>${escHtml(it.name)}</h3>
+          <h3>${maskName(it.name)}</h3>
           <div class="menu-name">${escHtml(it.menu)}</div>
           <div class="item-meta">
             <span class="tag accent">× ${it.qty}</span>
@@ -642,7 +657,7 @@
             ${it.note ? `<span class="tag">${escHtml(it.note)}</span>` : ''}
           </div>
         </div>
-        <div class="item-price">${price.toLocaleString()}원<small>${escHtml(it.contact)}</small></div>
+        <div class="item-price">${price.toLocaleString()}원<small>${maskPhone(it.contact)}</small></div>
       </div>`;
     }).join('');
     updateProgress();
