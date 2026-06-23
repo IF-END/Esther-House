@@ -412,6 +412,51 @@
     .detail-banner:hover .detail-banner-arrow { transform: translateX(4px); }
     .detail-banner:active { opacity: 0.85; }
 
+    /* ── 상품 미리보기 카드 ── */
+    .product-preview-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      background: linear-gradient(135deg, #2B1408 0%, #5C2910 100%);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 22px;
+      gap: 12px;
+      -webkit-tap-highlight-color: transparent;
+      transition: opacity 0.15s;
+    }
+    .product-preview-card:active { opacity: 0.85; }
+    .ppc-left { flex: 1; min-width: 0; }
+    .ppc-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: #FFD08A;
+      margin-bottom: 5px;
+      letter-spacing: 0.5px;
+    }
+    .ppc-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ppc-desc {
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+    }
+    .ppc-arrow {
+      font-size: 18px;
+      color: rgba(255,255,255,0.45);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .product-preview-card:hover .ppc-arrow { transform: translateX(4px); }
+
     footer {
       border-top: 1px solid var(--border);
       padding: 18px 20px;
@@ -463,13 +508,23 @@
     <div class="info-box"><div class="icon">📦</div><h4>최소 수량</h4><p>10인분 이상</p></div>
     <div class="info-box"><div class="icon">🚚</div><h4>배송 방식</h4><p>공동 수령 / 택배</p></div>
     <div class="info-box"><div class="icon">💳</div><h4>결제 방법</h4><p>계좌이체</p></div>
-    <div class="info-box"><div class="icon">📅</div><h4>공구 마감</h4><p id="-display">-</p></div>
+    <div class="info-box"><div class="icon">📅</div><h4>공구 마감</h4><p id="deadline-display">-</p></div>
   </div>
 
   <p class="section-title">물품 등록</p>
   <div class="form-card">
     <h2>참여 신청하기</h2>
     <p>원하는 메뉴와 수량을 입력하면 목록에 추가됩니다.</p>
+
+    <a href="detail.html" class="product-preview-card">
+      <div class="ppc-left">
+        <span class="ppc-badge">🍲 제품 안내</span>
+        <div class="ppc-name">콩순이네 우거지 청국장</div>
+        <div class="ppc-desc">국산콩 100% · 200g · 냉동 발송</div>
+      </div>
+      <span class="ppc-arrow">→</span>
+    </a>
+
     <div class="form-grid">
       <div class="form-group">
         <label>이름 / 닉네임</label>
